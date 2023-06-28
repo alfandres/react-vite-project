@@ -1,8 +1,10 @@
-import { NavLink } from "react-router-dom"
+import { useContext } from 'react';
+import { shopiContext } from '../../Context';
+import { NavLink } from 'react-router-dom';
 
 function Navbar () {
-
-    const activeStyle = 'underline underline-offset-8'
+    const context = useContext(shopiContext);
+    const activeStyle = 'underline underline-offset-8';
 
    return (
     <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-10 text-md font-medium'>
@@ -92,12 +94,12 @@ function Navbar () {
             </li>
             <li>
                 <NavLink to='/baby'>
-                    🛒 0
+                    🛒 {context.count}
                 </NavLink>
             </li>
         </ul>
     </nav>
-   ) 
+   ); 
 }
 
-export default Navbar
+export { Navbar } ;

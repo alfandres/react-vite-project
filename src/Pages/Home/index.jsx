@@ -1,25 +1,25 @@
-import { useState, useEffect } from "react"
-import Layout from "../../Components/Layout"
-import Card from "../../Components/Card"
+import { useState, useEffect } from 'react';
+import Layout from '../../Components/Layout';
+import Card from '../../Components/Card';
 
 function Home() {
-  const [items , setItems] = useState(null)
+  const [items , setItems] = useState(null);
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
     .then(res => res.json())
     .then(data => setItems(data))
-   //.then(data => setItems(data))
-  }, [])
+  
+  }, []);
 
     return (
       
         <Layout>
           Home
 
-          <div className='grid gap-4 grid-cols-4 w-full max-w-screen-lg'>
+          <div className='grid gap-16 grid-cols-4 w-full max-w-screen-lg'>
           {
-            items?.map( item => (
+            items?.map( (item) => (
           
               <Card key={item.id} data={item} />
             
@@ -29,7 +29,7 @@ function Home() {
          
         </Layout>
       
-    )
+    );
   }
   
-  export default Home
+  export default Home;

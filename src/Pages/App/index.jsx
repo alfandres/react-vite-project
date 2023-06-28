@@ -1,34 +1,19 @@
-import { useRoutes, BrowserRouter } from 'react-router-dom'
-
-import Home from '../Home'
-import MyAccount from '../MyAccount'
-import MyOrder from '../MyOrder'
-import MyOrders from '../MyOrders'
-import NotFound from '../NotFound'
-import SignIn from '../Signin'
-import Navbar from '../../Components/Navbar'
+import { ShopiProvider } from '../../Context';
+import { AppRoutes } from './AppRoutes';
+import { BrowserRouter } from 'react-router-dom';
+import { Navbar } from '../../Components/Navbar';
 
 import './App.css'
 
-const AppRoutes = () =>{
-  let router = useRoutes ([
-    { path: '/', element: <Home/> },
-    { path: '/MyAccount', element: <MyAccount/> },
-    { path: '/MyOrder', element: <MyOrder/> },
-    { path: '/MyOrders', element: <MyOrders/> },
-    { path: '/SignIn', element: <SignIn/> },
-    { path: '/*', element: <NotFound/> }
-  ])
-  return router
-}
-
 function App() {
   return (
+    <ShopiProvider>
     <BrowserRouter>
       <AppRoutes/>
       <Navbar/>
     </BrowserRouter>
-  )
+    </ShopiProvider>
+  );
 }
 
-export default App
+export default App;

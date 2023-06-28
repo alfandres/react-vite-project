@@ -1,4 +1,4 @@
-import Layout from "../../Components/Layout"
+import Layout from "../../Components/Layout";
 
 function SignIn() {
 
@@ -8,7 +8,7 @@ function SignIn() {
           Sign In
         </Layout>
       
-    )
+    );
   }
   
-  export default SignIn
+  export default SignIn;
