@@ -7,7 +7,7 @@ function Navbar () {
     const activeStyle = 'underline underline-offset-8';
 
    return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-10 text-md font-medium'>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
         <ul className='flex items-center gap-3'>
             <li className='font-bold text-lg'> 
                 <NavLink to='/'>
@@ -34,20 +34,20 @@ function Navbar () {
             </li>
             <li>
                 <NavLink 
-                to='/kid'
+                to='/electronics'
                 className= {( {isActive} ) =>
                     isActive ? activeStyle : undefined
                 }>
-                    Kid
+                    Electronics
                 </NavLink>
             </li>
             <li>
                 <NavLink 
-                to='/baby'
+                to='/jewelery'
                 className= {( {isActive} ) =>
                     isActive ? activeStyle : undefined
                 }>
-                    Baby
+                    Jewelery    
                 </NavLink>
             </li>
             <li>
@@ -62,7 +62,7 @@ function Navbar () {
         </ul>
 
         <ul className='flex items-center gap-3'>
-            <li className='text-red-500'>
+            <li className='text-red-500 font-semibold'>
                 example@email.com
             </li>
             <li>
