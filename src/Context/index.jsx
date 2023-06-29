@@ -5,12 +5,18 @@ const shopiContext = createContext();
 const ShopiProvider = ({children}) => {
 
     const [count, setCount] = useState(0);
-    console.log('cout: ', count);
+
+    const [productInfoOpen, setProductInfoOpen] = useState(false);
+    const openProductInfo = () =>  setProductInfoOpen(true);
+    const closeProductInfo = () => setProductInfoOpen(false);
 
     return(
         <shopiContext.Provider value={{
             count,
             setCount, 
+            openProductInfo,
+            closeProductInfo,
+            productInfoOpen
         }}>
         {children}
         </shopiContext.Provider>    
