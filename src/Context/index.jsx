@@ -14,6 +14,13 @@ const ShopiProvider = ({children}) => {
 //productInfo: informacion de los productos 
     const [productInformacion, setProductInformacion] = useState({});
 
+//ShoppingCart: agrgar al carro de compras 
+    const [addCard, setAddCard] = useState([]);
+
+//productInfo: open/close
+    const [checkoutShopingOpen, setCheckoutShopingOpen] = useState(false);
+    const openCheckoutShoping = () =>  setCheckoutShopingOpen(true);
+    const closeCheckoutShoping = () => setCheckoutShopingOpen(false);    
 
     return(
         <shopiContext.Provider value={{
@@ -23,7 +30,12 @@ const ShopiProvider = ({children}) => {
             closeProductInfo,
             productInfoOpen,
             productInformacion,
-            setProductInformacion
+            setProductInformacion,
+            addCard,
+            setAddCard,
+            checkoutShopingOpen,
+            openCheckoutShoping,
+            closeCheckoutShoping
         }}>
         {children}
         </shopiContext.Provider>    
