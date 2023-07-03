@@ -13,7 +13,7 @@ const infoProduct = (productDetail) => {
 const addProductToCard = ( event, productData) => {
     event.stopPropagation();
     context.setCount(context.count + 1);
-    context.setAddCard([...context.addCard, productData]);
+    context.setAddCards([...context.addCards, productData]);
     context.openCheckoutShoping();      
 
     console.log('card product: ', context.addCard);

@@ -15,7 +15,7 @@ const ShopiProvider = ({children}) => {
     const [productInformacion, setProductInformacion] = useState({});
 
 //ShoppingCart: agrgar al carro de compras 
-    const [addCard, setAddCard] = useState([]);
+    const [addCards, setAddCards] = useState([]);
 
 //productInfo: open/close
     const [checkoutShopingOpen, setCheckoutShopingOpen] = useState(false);
@@ -31,8 +31,8 @@ const ShopiProvider = ({children}) => {
             productInfoOpen,
             productInformacion,
             setProductInformacion,
-            addCard,
-            setAddCard,
+            addCards,
+            setAddCards,
             checkoutShopingOpen,
             openCheckoutShoping,
             closeCheckoutShoping
