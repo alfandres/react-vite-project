@@ -1,3 +1,4 @@
+import React from 'react';
 import { useRoutes } from 'react-router-dom';
 
 import Home from '../Home';
@@ -7,7 +8,7 @@ import MyOrders from '../MyOrders';
 import NotFound from '../NotFound';
 import SignIn from '../Signin';
 
-function AppRoutes () {
+function Routes () {
 
     let router = useRoutes ([
       { path: '/', element: <Home/> },
@@ -21,4 +22,4 @@ function AppRoutes () {
     return (router);
   }
 
-  export { AppRoutes };
+  export { Routes };

@@ -1,19 +1,22 @@
-import  ShopiProvider from '../../Context';
-import  AppRoutes from './AppRoutes';
-import  BrowserRouter from 'react-router-dom';
-import  Navbar from '../../Components/Navbar';
-import  CheckoutShoping from '../../Components/CheckoutShoping';
+import React from 'react';
 
-import './App.css'
+import { BrowserRouter } from 'react-router-dom';
+import { ShopiProvider } from '../../Context';
+import { Routes } from './Routes';
+import { Navbar } from '../../Components/Navbar';
+
+import CheckoutShoping from '../../Components/CheckoutShoping';
+
+import './App.css';
 
 function App() {
   return (
     <ShopiProvider>
-    <BrowserRouter>
-      <AppRoutes/>
-      <Navbar/>
-      <CheckoutShoping/>
-    </BrowserRouter>
+        <BrowserRouter>
+          <Routes/>
+          <Navbar/>
+          <CheckoutShoping/>
+      </BrowserRouter>
     </ShopiProvider>
   );
 }
