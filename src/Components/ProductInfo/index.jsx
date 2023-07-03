@@ -7,7 +7,7 @@ import'./ProductInfo.css';
 
 function ProductInfo () {
     const context = useContext(shopiContext);
-    console.log('info del producto: ', context.productInformacion);
+    
     return(
 
         <aside className={`${context.productInfoOpen ? 'flex' : 'hidden'} product-info flex-col fixed right-0 border border-black rounded-lg bg-white overflow-y-scroll`}>

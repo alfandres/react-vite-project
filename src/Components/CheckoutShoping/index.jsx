@@ -9,7 +9,11 @@ import'./CheckoutShoping.css';
 function CheckoutShoping () {
 
     const context = useContext(shopiContext);
-    console.log('info del producto: ', context.productInformacion);
+
+    const shopingDelete = (id) => {
+        const filteredProducts = context.addCards.filter(addCard => addCard.id !=id)
+        context.setAddCards(filteredProducts)
+    }
 
     return(
 
@@ -25,9 +29,11 @@ function CheckoutShoping () {
                     context.addCards.map( addCard => (
                         <OrderCard 
                             key={addCard.id}
+                            id={addCard.id}
                             title={addCard.title}
                             imageUrl={addCard.image}
                             price={addCard.price}
+                            shopingDelete={shopingDelete}
                         />
                     ))
                 }
