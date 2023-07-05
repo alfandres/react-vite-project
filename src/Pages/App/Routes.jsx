@@ -16,6 +16,7 @@ function Routes () {
       { path: '/MyOrder', element: <MyOrder/> },
       { path: '/MyOrders', element: <MyOrders/> },
       { path: '/MyOrders/last', element: <MyOrder/> },
+      { path: '/MyOrders/:id', element: <MyOrder/> },
       { path: '/SignIn', element: <SignIn/> },
       { path: '/*', element: <NotFound/> }
     ])
