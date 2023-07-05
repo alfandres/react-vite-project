@@ -1,13 +1,14 @@
 import { useContext } from 'react';
-import { XMarkIcon } from '@heroicons/react/24/solid';
+import { Link } from 'react-router-dom';
 import { shopiContext } from '../../Context';
-import OrderCard from '../../Components/OrderCard'
-import totalPrice from '../../Components/utils'
+import OrderCard from '../../Components/OrderCard';
+import totalPrice from '../../Components/utils';
+import { XMarkIcon } from '@heroicons/react/24/solid';
 
 import'./CheckoutShoping.css';
 
 
-function CheckoutShoping () {
+function CheckoutShoping() {
 
     const context = useContext(shopiContext);
 
@@ -26,6 +27,7 @@ function CheckoutShoping () {
 
         context.setOrder([...context.order, orderToAdd]);
         context.setAddCards([]); 
+        context.closeCheckoutShoping();
     }
 
     return(
@@ -56,7 +58,9 @@ function CheckoutShoping () {
                     <span className='font-light'>Total:</span>
                     <span className='font-medium text-2xl'>${totalPrice(context.addCards)}</span>
                 </p>
-                <button className='bg-black py-3 text-white w-full rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
+                <Link to='/MyOrders/last'>
+                    <button className='bg-black py-3 text-white w-full rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
+                </Link>
             </div>
         </aside>
 
