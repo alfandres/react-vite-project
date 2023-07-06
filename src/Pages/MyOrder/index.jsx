@@ -18,7 +18,7 @@ function MyOrder() {
             <Link to='/MyOrders' className='absolute left-0'>
               <ChevronDoubleLeftIcon className='h-6 w-6 text-black cursor-pointer'/>
             </Link>
-            <h1>MyOrder</h1>
+            <h1 className='font-medium text-xl'>My Order</h1>
           </div>
 
         <div className='flex flex-col w-80'>

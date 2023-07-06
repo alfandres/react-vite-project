@@ -5,7 +5,7 @@ function MyAccount() {
     return (
       
         <Layout>
-          MyAccount
+          My Account
         </Layout>
       
     );
