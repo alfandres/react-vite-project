@@ -7,6 +7,29 @@ import ProductInfo from '../../Components/ProductInfo';
 function Home() {
   const context = useContext(shopiContext);
  
+  const renderView = () => {
+    if(context.searchByTitle?.length > 0) {
+      if (context.filteredItems?.length > 0) {
+        return(
+          context.filteredItems?.map( (item) => (
+            <Card key={item.id} data={item} />
+          ))
+        )
+      }else{
+        return(
+          <div>We don't have anything</div>
+        )
+      }   
+    }else{
+      return (
+        context.items?.map( (item) => (
+          <Card key={item.id} data={item} />
+        ))
+      )
+    }
+
+  }
+
     return (
       
         <Layout>
@@ -22,13 +45,7 @@ function Home() {
           />
 
           <div className='grid gap-1 grid-cols-4 w-full max-w-screen-lg'>
-          {
-            context.items?.map( (item) => (
-          
-              <Card key={item.id} data={item} />
-            
-            ))
-          }
+          {renderView()}
           </div>
           <ProductInfo />
         </Layout>

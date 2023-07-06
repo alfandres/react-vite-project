@@ -28,10 +28,10 @@ const ShopiProvider = ({children}) => {
 
 // Get products
   const [items , setItems] = useState(null);
+  const [filteredItems , setFilteredItems] = useState(null);
 
 // Get products by search
     const [searchByTitle , setSearchByTitle] = useState(null);
-console.log(searchByTitle)
 
   useEffect(() => {
     fetch('https://fakestoreapi.com/products')
@@ -39,6 +39,14 @@ console.log(searchByTitle)
     .then(data => setItems(data))
   
   }, []);
+
+  const filteredItemsByTitle = (items, searchByTitle) => {
+    return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase())) 
+  }
+
+  useEffect(() => {
+    if(searchByTitle) setFilteredItems(filteredItemsByTitle(items,searchByTitle)) 
+  }, [items, searchByTitle]);
 
     return(
         <shopiContext.Provider value={{
@@ -59,7 +67,8 @@ console.log(searchByTitle)
             items,
             setItems,
             searchByTitle,
-            setSearchByTitle
+            setSearchByTitle,
+            filteredItems
         }}>
         {children}
         </shopiContext.Provider>    
