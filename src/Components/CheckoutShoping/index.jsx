@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { shopiContext } from '../../Context';
 import OrderCard from '../../Components/OrderCard';
-import totalPrice from '../../Components/utils';
+import totalPrice from '../../utils';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 import'./CheckoutShoping.css';
