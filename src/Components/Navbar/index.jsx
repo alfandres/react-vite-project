@@ -17,41 +17,41 @@ function Navbar () {
             </li>
             <li>
                 <NavLink 
-                to='/men'
-                className= {( {isActive} ) =>
-                    isActive ? activeStyle : undefined
-                }>
-                    Men
+                    to='/'
+                    onClick={() => context.setSearchByCategory()}
+                    className= {( {isActive} ) => isActive ? activeStyle : undefined}
+                >
+                    All
                 </NavLink>
             </li>
             <li>
                 <NavLink 
-                to='/woman'
-                className= {( {isActive} ) =>
-                    isActive ? activeStyle : undefined
-                }>
-                    Woman
+                    to='/clothing'
+                    onClick={() => context.setSearchByCategory('clothing')}
+                    className= {( {isActive} ) => isActive ? activeStyle : undefined}
+                >
+                    Clothing
                 </NavLink>
             </li>
             <li>
                 <NavLink 
-                to='/electronics'
-                className= {( {isActive} ) =>
-                    isActive ? activeStyle : undefined
-                }>
+                    to='/electronics'
+                    onClick={() => context.setSearchByCategory('electronics')}
+                    className= {( {isActive} ) => isActive ? activeStyle : undefined}
+                >
                     Electronics
                 </NavLink>
             </li>
             <li>
                 <NavLink 
-                to='/jewelery'
-                className= {( {isActive} ) =>
-                    isActive ? activeStyle : undefined
-                }>
+                    to='/jewelery'
+                    onClick={() => context.setSearchByCategory('jewelery')}
+                    className= {( {isActive} ) => isActive ? activeStyle : undefined}
+                >
                     Jewelery    
                 </NavLink>
             </li>
-            <li>
+            {/* <li>
                 <NavLink 
                 to='/others'
                 className= {( {isActive} ) =>
@@ -59,7 +59,7 @@ function Navbar () {
                 }>
                     Others
                 </NavLink>
-            </li>
+            </li> */}
         </ul>
 
         <ul className='flex items-center gap-3'>
@@ -95,7 +95,7 @@ function Navbar () {
             </li>
             <li className='flex'>
                 <ShoppingBagIcon className='h-6 w-6 text-black cursor-pointer'></ShoppingBagIcon>
-                <div>{context.count}</div> 
+                <div>{context.addCards.length}</div> 
                 
             </li>
         </ul>

@@ -12,6 +12,9 @@ function Routes () {
 
     let router = useRoutes ([
       { path: '/', element: <Home/> },
+      { path: '/clothing', element: <Home/> },
+      { path: '/electronics', element: <Home/> },
+      { path: '/jewelery', element: <Home/> },
       { path: '/MyAccount', element: <MyAccount/> },
       { path: '/MyOrder', element: <MyOrder/> },
       { path: '/MyOrders', element: <MyOrders/> },

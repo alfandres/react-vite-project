@@ -38,8 +38,6 @@ function Card ({data}) {
                 </button>
             );
         }
-        
-
     }
 
     return (

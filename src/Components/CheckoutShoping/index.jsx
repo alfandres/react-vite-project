@@ -27,6 +27,7 @@ function CheckoutShoping() {
 
         context.setOrder([...context.order, orderToAdd]);
         context.setAddCards([]); 
+        context.setSearchByTitle(null)
         context.closeCheckoutShoping();
     }
 
