@@ -17,6 +17,11 @@ function Card ({data}) {
         context.openCheckoutShoping();      
     }
 
+    const shopingDelete = (id) => {
+        const filteredProducts = context.addCards.filter(addCard => addCard.id !=id)
+        context.setAddCards(filteredProducts)
+    }
+
     const renderIcon = (id) => {
         const isInCard = context.addCards.filter(addCard => addCard.id === id).length > 0 
         
@@ -24,7 +29,8 @@ function Card ({data}) {
             return(
             
                 <button
-                className='absolute top-0 left-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'>
+                className='absolute top-0 left-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'
+                onClick={(event) =>  shopingDelete(id)}>
                     <CheckIcon className='h-6 w-6 text-yellow-300 cursor-pointer'></CheckIcon>
                 </button>
             );

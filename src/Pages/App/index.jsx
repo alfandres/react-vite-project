@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { BrowserRouter } from 'react-router-dom';
 import { ShopiProvider } from '../../Context';
 import { Routes } from './Routes';

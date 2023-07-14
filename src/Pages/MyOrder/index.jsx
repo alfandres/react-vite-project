@@ -29,6 +29,7 @@ function MyOrder() {
                 id={product.id}
                 title={product.title}
                 imageUrl={product.image}
+                quantity={product.quantity}
                 price={product.price}
               />
             ))
