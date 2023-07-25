@@ -1,9 +1,12 @@
 import { useContext } from 'react';
-import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid';
 import { shopiContext } from '../../Context';
+import { PlusIcon, CheckIcon } from '@heroicons/react/24/solid';
+
+
 
 function Card ({data}) {
     const context = useContext(shopiContext);
+    
 
     const infoProduct = (productDetail) => {
         context.openProductInfo();     
@@ -14,8 +17,10 @@ function Card ({data}) {
         event.stopPropagation();
         context.setCount(context.count + 1);
         context.setAddCards([...context.addCards, productData]);
-        context.openCheckoutShoping();      
+        context.addToCart(productData.id);
+        context.openCheckoutShoping();    
     }
+    
 
     const shopingDelete = (id) => {
         const filteredProducts = context.addCards.filter(addCard => addCard.id !=id)
@@ -30,7 +35,7 @@ function Card ({data}) {
             
                 <button
                 className='absolute top-0 left-0 flex justify-center items-center bg-black w-6 h-6 rounded-full m-2 p-1'
-                onClick={(event) =>  shopingDelete(id)}>
+                onClick={(event) => shopingDelete(id)}>
                     <CheckIcon className='h-6 w-6 text-yellow-300 cursor-pointer'></CheckIcon>
                 </button>
             );

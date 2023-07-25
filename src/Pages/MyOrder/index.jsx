@@ -6,8 +6,9 @@ import OrderCard from '../../Components/OrderCard';
 import { ChevronDoubleLeftIcon } from '@heroicons/react/24/solid';
 
 function MyOrder() {
-
+  
   const context = useContext(shopiContext); 
+
   const currentPath = window.location.pathname
   let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
   if(index === 'last') index = context.order?.length - 1
@@ -29,7 +30,6 @@ function MyOrder() {
                 id={product.id}
                 title={product.title}
                 imageUrl={product.image}
-                quantity={product.quantity}
                 price={product.price}
               />
             ))

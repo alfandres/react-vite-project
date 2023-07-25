@@ -1,24 +1,23 @@
 import { createContext, useState, useEffect } from 'react';  
-import { useLocalStorage } from './useLocalStorage';
 
 const shopiContext = createContext();
 
 const ShopiProvider = ({children}) => {
 
-  // const {
-  //   art: order,
-  //   saveArt: setOrder
-  // } = useLocalStorage('ORDER_V1', []);
-
 // ShoppingCart: contador
-    const [count, setCount] = useState(0);
+  const [count, setCount] = useState(0);
 
 // ShoppingCart: agrgar al carro de compras 
-    const [addCards, setAddCards] = useState([]);
+  const [addCards, setAddCards] = useState([]);
+
+// ShoppingCart: quantity
+//const [quantity, setQuantity] = useState(1);
+
+const [cartItems, setCartItems] = useState({});
 
 // ShoppingCart: My order
   const [order, setOrder] = useState([]);
-
+  
 // productInfo: open/close
     const [productInfoOpen, setProductInfoOpen] = useState(false);
     const openProductInfo = () =>  setProductInfoOpen(true);
@@ -42,19 +41,34 @@ const ShopiProvider = ({children}) => {
     const [searchByCategory , setSearchByCategory] = useState(null);
 
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products',{
-      method:"PUT",
-            body:JSON.stringify(
-                {
-                  quantity: 1   
-                }
-            )
-    })
-    
+    fetch('https://fakestoreapi.com/products')
     .then(res => res.json())
     .then(data => setItems(data))
   
   }, []);
+
+  const addToCart = (productId) => {
+    setCartItems((prevCartItems) => ({
+      ...prevCartItems,
+      [productId]: (prevCartItems[productId] || 0) + 1,
+    }));
+  };
+
+  const removeFromCart = (productId) => {
+    setCartItems((prevCartItems) => {
+      const updatedCartItems = { ...prevCartItems };
+      if (updatedCartItems[productId] > 1) {
+        updatedCartItems[productId] -= 1;
+      } else {
+        delete updatedCartItems[productId];
+      }
+      return updatedCartItems;
+    });
+  };
+
+  const clearCart = () => {
+    setCartItems({});
+  };
 
   const filteredItemsByTitle = (items, searchByTitle) => {
     return items?.filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()));
@@ -114,7 +128,14 @@ const ShopiProvider = ({children}) => {
           filteredItems,
           searchByCategory,
           setSearchByCategory,
-          filteredItemsByCategory
+          filteredItemsByCategory,
+          //quantity,
+          //setQuantity,
+          addToCart,
+          removeFromCart,
+          cartItems,
+          clearCart
+
         }}>
         {children}
       </shopiContext.Provider>    

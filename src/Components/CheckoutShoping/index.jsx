@@ -1,8 +1,8 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
 import { shopiContext } from '../../Context';
 import OrderCard from '../../Components/OrderCard';
-import calculateFullPrice from '../../utils';
+import getTotalPrice from '../../utils';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 
 import'./CheckoutShoping.css';
@@ -22,14 +22,16 @@ function CheckoutShoping() {
             date: '04.07.23',
             products: context.addCards,
             totalProducts: context.addCards.length,
-            totalPrice: calculateFullPrice(context.addCards)
+            totalPrice: getTotalPrice(context.cartItems, context.addCards)
         }
 
         context.setOrder([...context.order, orderToAdd]);
         context.setAddCards([]); 
         context.setSearchByTitle(null)
         context.closeCheckoutShoping();
+        context.clearCart();
     }
+    
 
     return(
 
@@ -49,7 +51,6 @@ function CheckoutShoping() {
                             title={addCard.title}
                             imageUrl={addCard.image}
                             price={addCard.price}
-                            git={addCard.quantity}
                             shopingDelete={shopingDelete}
                         />
                     ))
@@ -58,7 +59,7 @@ function CheckoutShoping() {
             <div className='px-6 mb-6'>
                 <p className='flex justify-between items-center mb-3'>
                     <span className='font-light'>Total:</span>
-                    <span className='font-medium text-2xl'>${calculateFullPrice(context.addCards)}</span>
+                    <span className='font-medium text-2xl'>${getTotalPrice(context.cartItems, context.addCards)}</span>
                 </p>
                 <Link to='/MyOrders/last'>
                     <button className='bg-black py-3 text-white w-full rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
