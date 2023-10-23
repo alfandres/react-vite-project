@@ -1,1 +1,1 @@
-# react-vite-project
+# react-vite-project-shopi
