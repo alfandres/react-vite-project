@@ -5,20 +5,26 @@ import { shopiContext } from '../../Context';
 
 function Navbar () {
     const context = useContext(shopiContext);
-    const activeStyle = 'underline underline-offset-8';
+    const activeStyle = 'underline underline-offset-8 text-white';
+
+    const handleSearch = () =>{
+        context.setSearchByTitle('') 
+    }
+
+    
 
    return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-white'>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-[#299fff]'>
         <ul className='flex items-center gap-3'>
             <li className='font-bold text-lg'> 
                 <NavLink to='/'>
-                    Shopi
+                   <span className=' text-white'>Shop</span><span className='text-red-500'>i</span>
                 </NavLink>
             </li>
             <li>
                 <NavLink 
                     to='/'
-                    onClick={() => context.setSearchByCategory()}
+                    onClick={() => context.setSearchByCategory() + handleSearch()}
                     className= {( {isActive} ) => isActive ? activeStyle : undefined}
                 >
                     All
@@ -27,7 +33,7 @@ function Navbar () {
             <li>
                 <NavLink 
                     to='/clothing'
-                    onClick={() => context.setSearchByCategory('clothing')}
+                    onClick={() => context.setSearchByCategory('clothing') + handleSearch()}
                     className= {( {isActive} ) => isActive ? activeStyle : undefined}
                 >
                     Clothing
@@ -36,7 +42,7 @@ function Navbar () {
             <li>
                 <NavLink 
                     to='/electronics'
-                    onClick={() => context.setSearchByCategory('electronics')}
+                    onClick={() => context.setSearchByCategory('electronics') + handleSearch()}
                     className= {( {isActive} ) => isActive ? activeStyle : undefined}
                 >
                     Electronics
@@ -45,7 +51,7 @@ function Navbar () {
             <li>
                 <NavLink 
                     to='/jewelery'
-                    onClick={() => context.setSearchByCategory('jewelery')}
+                    onClick={() => context.setSearchByCategory('jewelery') + handleSearch()}
                     className= {( {isActive} ) => isActive ? activeStyle : undefined}
                 >
                     Jewelery    
@@ -63,8 +69,13 @@ function Navbar () {
         </ul>
 
         <ul className='flex items-center gap-3'>
-            <li className='text-red-500 font-semibold'>
-                example@email.com
+            <li>
+                <NavLink
+                to='/MyAccount'
+                className='text-red-500 font-semibold'
+                >
+                   johndoe@example.com
+                </NavLink>
             </li>
             <li>
                 <NavLink 
@@ -84,7 +95,7 @@ function Navbar () {
                     My Account
                 </NavLink>
             </li>
-            <li>
+            {/* <li>
                 <NavLink 
                 to='/SignIn'
                 className= {( {isActive} ) =>
@@ -92,11 +103,14 @@ function Navbar () {
                 }>
                     Sign In
                 </NavLink>
-            </li>
-            <li className='flex'>
-                <ShoppingBagIcon className='h-6 w-6 text-black cursor-pointer'></ShoppingBagIcon>
-                <div>{context.addCards.length}</div> 
-                
+            </li> */}
+            <li>
+                <NavLink 
+                onClick={() => context.openCheckoutShoping()}
+                className='flex'>
+                    <ShoppingBagIcon className='h-6 w-6 text-white cursor-pointer'></ShoppingBagIcon>
+                    <div>{context.addCards.length}</div> 
+                </NavLink>
             </li>
         </ul>
     </nav>

@@ -1,8 +1,16 @@
+import { data } from 'autoprefixer';
 import { createContext, useState, useEffect } from 'react';  
 
 const shopiContext = createContext();
 
 const ShopiProvider = ({children}) => {
+
+// Sign In: firebase
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+
+//LoadingScreen:
+  const [loading, setLoading] = useState(true);
 
 // ShoppingCart: contador
   const [count, setCount] = useState(0);
@@ -11,16 +19,14 @@ const ShopiProvider = ({children}) => {
   const [addCards, setAddCards] = useState([]);
 
 // ShoppingCart: quantity
-//const [quantity, setQuantity] = useState(1);
-
-const [cartItems, setCartItems] = useState({});
+  const [cartItems, setCartItems] = useState({});
 
 // ShoppingCart: My order
   const [order, setOrder] = useState([]);
   
 // productInfo: open/close
     const [productInfoOpen, setProductInfoOpen] = useState(false);
-    const openProductInfo = () =>  setProductInfoOpen(true);
+    const openProductInfo = () => setProductInfoOpen(true);
     const closeProductInfo = () => setProductInfoOpen(false);
 
 // productInfo: informacion de los productos 
@@ -33,10 +39,12 @@ const [cartItems, setCartItems] = useState({});
 
 // Get products
   const [items , setItems] = useState(null);
-  const [filteredItems , setFilteredItems] = useState(null);
 
-// Get products by search
-    const [searchByTitle , setSearchByTitle] = useState(null);
+  const [filteredItems , setFilteredItems] = useState(null);
+  
+// Get products by title
+    const [searchByTitle , setSearchByTitle] = useState('');
+  
 // Get products by search category
     const [searchByCategory , setSearchByCategory] = useState(null);
 
@@ -45,6 +53,14 @@ const [cartItems, setCartItems] = useState({});
     .then(res => res.json())
     .then(data => setItems(data))
   
+  }, []);
+
+  // Simulación de una operación asincrónica con un retraso de 3 segundos.
+  useEffect(() => {
+      setTimeout(() => {
+        setLoading(false);
+      }, 3000);
+    
   }, []);
 
   const addToCart = (productId) => {
@@ -57,6 +73,7 @@ const [cartItems, setCartItems] = useState({});
   const removeFromCart = (productId) => {
     setCartItems((prevCartItems) => {
       const updatedCartItems = { ...prevCartItems };
+      
       if (updatedCartItems[productId] > 1) {
         updatedCartItems[productId] -= 1;
       } else {
@@ -82,14 +99,14 @@ const [cartItems, setCartItems] = useState({});
 
     if (searchType === 'BY_TITLE'){
       return filteredItemsByTitle(items, searchByTitle);
-
-    }else if(searchType === 'BY_CATEGORY') {
+    } 
+    if(searchType === 'BY_CATEGORY') {
       return filteredItemsByCategory(items,searchByCategory);
-
-    }else if(searchType === 'BY_TITLE_AND_CATEGORY') {
+    }
+    if(searchType === 'BY_TITLE_AND_CATEGORY') {
       return filteredItemsByCategory(items,searchByCategory).filter(item => item.title.toLowerCase().includes(searchByTitle.toLowerCase()));
-
-    }else if(!searchType){
+    }
+    if(!searchType){
       return items;
     }
   }
@@ -101,7 +118,7 @@ const [cartItems, setCartItems] = useState({});
 
     if(!searchByTitle && searchByCategory) setFilteredItems(filterBy('BY_CATEGORY', items, searchByTitle, searchByCategory)); 
     
-    if(!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null , items, searchByTitle, searchByCategory)); 
+    if(!searchByTitle && !searchByCategory) setFilteredItems(filterBy(null, items, searchByTitle, searchByCategory)); 
     
   }, [items, searchByTitle, searchByCategory]); 
 
@@ -128,13 +145,15 @@ const [cartItems, setCartItems] = useState({});
           filteredItems,
           searchByCategory,
           setSearchByCategory,
-          filteredItemsByCategory,
-          //quantity,
-          //setQuantity,
           addToCart,
           removeFromCart,
           cartItems,
-          clearCart
+          clearCart,
+          loading,
+          email, 
+          setEmail,
+          name, 
+          setName
 
         }}>
         {children}

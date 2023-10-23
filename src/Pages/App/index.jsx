@@ -1,20 +1,16 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import React, { useContext } from 'react';
 import { ShopiProvider } from '../../Context';
-import { Routes } from './Routes';
-import { Navbar } from '../../Components/Navbar';
-
-import CheckoutShoping from '../../Components/CheckoutShoping';
-
+import { BrowserRouter } from 'react-router-dom';
+import { AppUI } from './AppUI';
 import './App.css';
 
+
 function App() {
+
   return (
     <ShopiProvider>
-        <BrowserRouter>
-          <Routes/>
-          <Navbar/>
-          <CheckoutShoping/>
+      <BrowserRouter>
+        <AppUI/>
       </BrowserRouter>
     </ShopiProvider>
   );

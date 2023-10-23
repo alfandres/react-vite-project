@@ -10,7 +10,7 @@ function OrderCard (props) {
 
     let renderXMarkIcon;
     if (shopingDelete) {
-        renderXMarkIcon = <XMarkIcon onClick={() => shopingDelete(id)} className='h-6 w-6 text-black cursor-pointer'></XMarkIcon>
+        renderXMarkIcon = <XMarkIcon onClick={() => shopingDelete(id)} className='h-6 w-6 text-red-500 cursor-pointer'></XMarkIcon>
     }
 
     const handleIncrement = () => {

@@ -38,7 +38,7 @@ function CheckoutShoping() {
         <aside className={`${context.checkoutShopingOpen ? 'flex' : 'hidden'} checkout-shoping flex-col fixed right-0 border border-black rounded-lg bg-white overflow-y-scroll`}>
             <div className='flex justify-between items-center p-6'>
                 <div>
-                    <XMarkIcon className='h-6 w-6 text-black cursor-pointer' onClick={() => context.closeCheckoutShoping()}></XMarkIcon>
+                    <XMarkIcon className='h-6 w-6 text-black cursor-pointer hover:text-red-500' onClick={() => context.closeCheckoutShoping()}></XMarkIcon>
                 </div>
                 <h2 className='font-medium text-xl'>My Order</h2>
             </div>
@@ -57,12 +57,14 @@ function CheckoutShoping() {
                 }
             </div>
             <div className='px-6 mb-6'>
+                <div className=' bg-black/25 w-full rounded-lg'>
                 <p className='flex justify-between items-center mb-3'>
-                    <span className='font-light'>Total:</span>
-                    <span className='font-medium text-2xl'>${getTotalPrice(context.cartItems, context.addCards)}</span>
+                    <span className='font-light ml-2'>Total:</span>
+                    <span className='font-medium text-2xl mr-2'>${getTotalPrice(context.cartItems, context.addCards)}</span>
                 </p>
+                </div>
                 <Link to='/MyOrders/last'>
-                    <button className='bg-black py-3 text-white w-full rounded-lg' onClick={() => handleCheckout()}>Checkout</button>
+                    <button className='bg-black py-3 text-white w-full rounded-lg hover:bg-[#299fff]' onClick={() => handleCheckout()}>Checkout</button>
                 </Link>
             </div>
         </aside>
