@@ -12,7 +12,7 @@ import MyAccount from '../MyAccount';
 import MyOrder from '../MyOrder';
 import MyOrders from '../MyOrders';
 import NotFound from '../NotFound';
-import SignIn from '../Signin';
+// import SignIn from '../Signin';
 
 function AppUI () {
   const context = useContext(shopiContext);
@@ -28,7 +28,7 @@ function AppUI () {
       { path: '/MyOrders', element: <MyOrders/> },
       { path: '/MyOrders/last', element: <MyOrder/> },
       { path: '/MyOrders/:id', element: <MyOrder/> },
-      { path: '/SignIn', element: <SignIn/> },
+      // { path: '/SignIn', element: <SignIn/> },
       { path: '/*', element: <NotFound/> }
     ]);
     return router ;
