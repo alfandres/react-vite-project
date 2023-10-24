@@ -1,37 +1,37 @@
 import React from 'react';
 import { useContext } from 'react';
 import { shopiContext } from '../../Context';
-import firebase from './firebase';
+// import firebase from './firebase';
 
 const LoginForm = () => {
   const context = useContext(shopiContext);
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
+  // const handleLogin = async (event) => {
+  //   event.preventDefault();
 
-    try {
-      // Verifica si el usuario ya existe en Firebase por su correo electrónico
-      const userCredential = await firebase.auth().fetchSignInMethodsForEmail(context.email);
+  //   try {
+  //     // Verifica si el usuario ya existe en Firebase por su correo electrónico
+  //     const userCredential = await firebase.auth().fetchSignInMethodsForEmail(context.email);
 
-      if (userCredential.length === 0) {
-        // Si el usuario no existe, crea una cuenta nueva con el correo electrónico y nombre ingresados
-        await firebase.auth().createUserWithEmailAndPassword(context.email, ''); // La contraseña es opcional y se puede dejar en blanco para este caso
-        await firebase.auth().currentUser.updateProfile({
-          displayName: context.name,
-        });
-        alert('Cuenta creada exitosamente');
-        console.log('Cuenta creada exitosamente');
-      } else {
-        // Si el usuario ya existe, inicia sesión con el correo electrónico ingresado
-        await firebase.auth().signInWithEmailAndPassword(context.email, ''); // La contraseña es opcional y se puede dejar en blanco para este caso
-        alert('Inicio de sesión exitoso');
-        console.log('Inicio de sesión exitoso');
+  //     if (userCredential.length === 0) {
+  //       // Si el usuario no existe, crea una cuenta nueva con el correo electrónico y nombre ingresados
+  //       await firebase.auth().createUserWithEmailAndPassword(context.email, ''); // La contraseña es opcional y se puede dejar en blanco para este caso
+  //       await firebase.auth().currentUser.updateProfile({
+  //         displayName: context.name,
+  //       });
+  //       alert('Cuenta creada exitosamente');
+  //       console.log('Cuenta creada exitosamente');
+  //     } else {
+  //       // Si el usuario ya existe, inicia sesión con el correo electrónico ingresado
+  //       await firebase.auth().signInWithEmailAndPassword(context.email, ''); // La contraseña es opcional y se puede dejar en blanco para este caso
+  //       alert('Inicio de sesión exitoso');
+  //       console.log('Inicio de sesión exitoso');
 
-      }
-    } catch (error) {
-      console.error('Error al iniciar sesión o crear cuenta:', error.message);
-    }
-  };
+  //     }
+  //   } catch (error) {
+  //     console.error('Error al iniciar sesión o crear cuenta:', error.message);
+  //   }
+  // };
 
   return (
     <form onSubmit={handleLogin}>
