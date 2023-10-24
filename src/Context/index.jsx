@@ -1,4 +1,4 @@
-import { data } from 'autoprefixer';
+// import { data } from 'autoprefixer';
 import { createContext, useState, useEffect } from 'react';  
 
 const shopiContext = createContext();
@@ -6,8 +6,8 @@ const shopiContext = createContext();
 const ShopiProvider = ({children}) => {
 
 // Sign In: firebase
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [name, setName] = useState('');
 
 //LoadingScreen:
   const [loading, setLoading] = useState(true);
@@ -150,10 +150,6 @@ const ShopiProvider = ({children}) => {
           cartItems,
           clearCart,
           loading,
-          email, 
-          setEmail,
-          name, 
-          setName
 
         }}>
         {children}

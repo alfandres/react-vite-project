@@ -1,7 +1,7 @@
 import Layout from "../../Components/Layout";
 import React from "react";
 
-import LoginForm from "../../Components/LoginForm";
+// import LoginForm from "../../Components/LoginForm";
 
 function SignIn() {
 
@@ -9,7 +9,7 @@ function SignIn() {
       
         <Layout>
           Sign In
-          <LoginForm />
+          {/* <LoginForm /> */}
         </Layout>
       
     );
